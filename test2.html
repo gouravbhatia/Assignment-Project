@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<body style=" background: linear-gradient(to right,  #66ffcc  0%,  #ff99cc 100%);">
+        <div id="result">
+            </div>
+<script>
+var q = $("#query").val();
+        var url = `https://allsportsapi.com/api/basketball/?&met=Teams&teamId=2616&APIkey=1aa3ac2b67f2eef3b1a44d98e9ac19a8682758f297366db36f3a4a4757de1721`;
+        var result;
+        $.ajax(url).done(function (response) {
+        console.log(response);
+       
+        for(let i =0 ; i < response.result.length;i++){
+            $("#result").append(
+                `<img src="https://allsportsapi.com/logo-basketball/2616_mit.png">
+               
+                       
+        
+               
+                               <hr>
+                <br>
+       `
+        
+              )  }
+    }
+    
+);
+</script>
+</body>
+</html>
+        

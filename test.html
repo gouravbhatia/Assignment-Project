@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head> 
+
+<body>
+<div class="jumbotron"  style="background-image: linear-gradient( 90.9deg, rgba(231,122,122,1) 23.9%, rgba(255,189,71,1) 98.1% );">
+<center> 
+<h1 style="font-family:broadway;">Find Country League</h1>
+<br><br>   
+<div class="form-group w-50">
+  <input type="text" placeholder="Enter Country name" class="form-control" id="query">
+</div>
+<br><br>
+<button type="button" id="button" class="btn btn-success btn-lg">Describe </button>
+    <br><br>
+    <div id="result">
+    
+    </div>
+</center>
+</div>
+   
+</body>
+<script>
+    $("#button").click(
+       
+        () => {
+            var q = $("#query").val();
+            var url = `https://allsportsapi.com/api/basketball/?met=Leagues&APIkey=1aa3ac2b67f2eef3b1a44d98e9ac19a8682758f297366db36f3a4a4757de1721`;
+            var result;
+            $.ajax(url).done(function (response) {
+            console.log(response);
+           
+            for(let i =0 ; i < response.result.length;i++){
+          if(response.result[i].country_name==q){
+               $("#result").append(
+          
+            `<p> Country code: ${response.result[i].country_key} <br></p>
+            <p> Leagues Name: ${response.result[i].league_name} <br></p>
+            <br>
+            <br>
+            <hr>
+            <br>
+              `
+            )}
+
+               }
+                
+            }
+        
+        
+    )});
+    
+
+  
+</script>
+
+</html>
